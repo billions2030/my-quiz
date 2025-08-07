@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부자의 기술 퀴즈</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="start-container">
+            <h1>부자의 기술 심층 퀴즈</h1>
+            <p>퀴즈를 시작하기 전에 이름을 입력해주세요.</p>
+            <input type="text" id="name-input" placeholder="여기에 이름 입력">
+            <button id="start-btn" class="next-btn">퀴즈 시작!</button>
+        </div>
+
+        <div id="quiz-container" class="hide">
+            <div id="progress-container">
+                <span id="current-question-number">0</span> / <span id="total-questions-display">0</span>
+            </div>
+            <h2 id="question-text">여기에 질문이 표시됩니다.</h2>
+            <div id="answer-buttons" class="btn-grid"></div>
+            <button id="next-btn" class="next-btn hide">다음</button>
+        </div>
+
+        <div id="result-container" class="hide">
+            <h2>🎉 퀴즈 결과 🎉</h2>
+            <p><span id="user-name-result"></span>님의 점수는 총 <span id="total-questions"></span>문제 중 <span id="score-text">0</span>점 입니다!</p>
+            <p><strong>[피드백]</strong></p>
+            <div id="feedback-text">여기에 맞춤 피드백이 표시됩니다.</div>
+            <button id="restart-btn" class="next-btn">처음부터 다시 풀기</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

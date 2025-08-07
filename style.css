@@ -1,0 +1,118 @@
+/* 전체 페이지에 적용될 기본 스타일 */
+body {
+    background-color: #f0f4f8;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 퀴즈 전체를 감싸는 상자 */
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+/* 진행 상황 스타일 */
+#progress-container {
+    text-align: right;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* 이름 입력창 스타일 */
+#name-input {
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* 답변 버튼들을 격자 형태로 정렬 */
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+@media (min-width: 576px) {
+    .btn-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 피드백 영역 스타일 */
+#feedback-text ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+#feedback-text li {
+    background-color: #f9f9f9;
+    border-left: 5px solid #007bff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+
+/* 버튼 공통 스타일 */
+.btn, .next-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+}
+
+.next-btn {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.btn:hover, .next-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* (가장 중요!) 정답/오답일 때 버튼 색상 */
+.btn.correct {
+    background-color: #28a745;
+}
+
+.btn.wrong {
+    background-color: #dc3545;
+}
+
+.btn:disabled {
+    background-color: #a9a9a9;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.hide {
+    display: none;
+}
