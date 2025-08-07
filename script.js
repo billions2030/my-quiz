@@ -18,7 +18,7 @@ const scoreText = document.getElementById('score-text');
 const feedbackText = document.getElementById('feedback-text');
 const restartButton = document.getElementById('restart-btn');
 
-// (업그레이드) 페이지 번호가 추가된 격려의 피드백 라이브러리
+// 격려의 피드백 라이브러리
 const feedbackLibrary = {
     "부자의 정의": "부자의 진짜 의미를 고민하는 모습이 정말 멋져요. 돈의 액수보다 내면의 자유와 자존감을 중요하게 생각하는 그 마음, 꼭 간직하세요! (책 23페이지 참고)",
     "부자의 마인드셋": "결핍이 때로는 성장의 가장 큰 동력이 된다는 것을 이해하고 계시네요. 현실에 안주하지 않고 끊임없이 나아가는 당신의 열정을 응원합니다! (책 28페이지 참고)",
@@ -49,7 +49,6 @@ let wrongCategories;
 let userName;
 let selectedQuestions = [];
 
-// 퀴즈 시작 버튼 이벤트
 startButton.addEventListener('click', () => {
     userName = nameInput.value;
     if (userName.trim() === "") {
@@ -60,7 +59,6 @@ startButton.addEventListener('click', () => {
     startQuiz();
 });
 
-// 퀴즈 시작 함수
 function startQuiz() {
     selectedQuestions = questionBank.sort(() => 0.5 - Math.random()).slice(0, 5);
     currentQuestionIndex = 0;
@@ -72,7 +70,6 @@ function startQuiz() {
     showQuestion();
 }
 
-// 질문 보여주기 함수
 function showQuestion() {
     resetState();
     currentQuestionNumberDisplay.innerText = currentQuestionIndex + 1;
@@ -98,7 +95,6 @@ function resetState() {
     }
 }
 
-// 답변 선택 함수
 function selectAnswer(e) {
     const selectedButton = e.target;
     const isCorrect = selectedButton.dataset.correct === "true";
@@ -139,11 +135,9 @@ function handleNextButton() {
     }
 }
 
-// 결과 보여주기 함수
 function showResult() {
     quizContainer.classList.add('hide');
     resultContainer.classList.remove('hide');
-
     userNameResult.innerText = userName;
     totalQuestionsText.innerText = selectedQuestions.length;
     scoreText.innerText = score;
@@ -158,7 +152,6 @@ function showResult() {
         feedbackText.innerHTML = `<ul>${feedbackHTML}</ul>`;
     }
 
-    // N8N으로 이름까지 함께 전송
     const resultData = {
         userName: userName,
         score: score,
@@ -171,4 +164,13 @@ function showResult() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(resultData),
     })
-    .then(response => console.log("N
+    .then(response => console.log("N8N으로 데이터 전송 성공!", response))
+    .catch(error => console.error("N8N 전송 오류:", error));
+}
+
+nextButton.addEventListener('click', handleNextButton);
+restartButton.addEventListener('click', () => {
+    startContainer.classList.remove('hide');
+    resultContainer.classList.add('hide');
+    nameInput.value = "";
+});
